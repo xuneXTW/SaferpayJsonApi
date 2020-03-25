@@ -6,6 +6,7 @@ use JMS\Serializer\Annotation\SerializedName;
 use Ticketpark\SaferpayJson\Container\Notification;
 use Ticketpark\SaferpayJson\Container\Payer;
 use Ticketpark\SaferpayJson\Container\Payment;
+use Ticketpark\SaferpayJson\Container\RegisterAlias;
 use Ticketpark\SaferpayJson\Container\ReturnUrls;
 use Ticketpark\SaferpayJson\Request\Request;
 use Ticketpark\SaferpayJson\Request\RequestCommonsTrait;
@@ -54,6 +55,12 @@ class InitializeRequest extends Request
     protected $payer;
 
     /**
+     * @var RegisterAlias
+     * @SerializedName("RegisterAlias")
+     */
+    protected $registerAlias;
+
+    /**
      * @var ReturnUrls
      * @SerializedName("ReturnUrls")
      */
@@ -97,6 +104,18 @@ class InitializeRequest extends Request
     public function setPayer(Payer $payer): self
     {
         $this->payer = $payer;
+
+        return $this;
+    }
+
+    public function getRegisterAlias(): RegisterAlias
+    {
+        return $this->registerAlias;
+    }
+
+    public function setRegisterAlias(RegisterAlias $registerAlias): self
+    {
+        $this->registerAlias = $registerAlias;
 
         return $this;
     }
