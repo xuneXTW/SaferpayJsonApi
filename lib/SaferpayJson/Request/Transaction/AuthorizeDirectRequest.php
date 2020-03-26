@@ -3,6 +3,7 @@ namespace Ticketpark\SaferpayJson\Request\Transaction;
 
 use JMS\Serializer\Annotation\SerializedName;
 use JMS\Serializer\Annotation\Type;
+use Ticketpark\SaferpayJson\Container\Payer;
 use Ticketpark\SaferpayJson\Request\Request;
 use Ticketpark\SaferpayJson\Container\Payment;
 use Ticketpark\SaferpayJson\Container\PaymentMeans;
@@ -27,6 +28,12 @@ class AuthorizeDirectRequest extends Request
     protected $payment;
 
     /**
+     * @var Payer
+     * @SerializedName("Payer")
+     */
+    protected $payer;
+
+    /**
      * @var PaymentMeans
      * @SerializedName("PaymentMeans")
      * @Type("Ticketpark\SaferpayJson\Container\PaymentMeans")
@@ -47,6 +54,18 @@ class AuthorizeDirectRequest extends Request
     public function setPayment(Payment $payment): self
     {
         $this->payment = $payment;
+
+        return $this;
+    }
+
+    public function getPayer(): Payer
+    {
+        return $this->payer;
+    }
+
+    public function setPayer(Payer $payer): self
+    {
+        $this->payer = $payer;
 
         return $this;
     }
